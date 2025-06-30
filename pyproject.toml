@@ -1,0 +1,9 @@
+[project]
+name = "mcp-knowledge-graph"
+version = "0.1.0"
+description = "An MCP Server built with FastMCP w/ KuzuDB for embedded Cypher-backed knowledge graph storage."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastmcp>=2.9.2",
+]
