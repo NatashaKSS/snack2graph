@@ -43,3 +43,19 @@ Snack2Graph parses unstructured text and constructs a Knowledge Graph with a ric
 │ version   Show the current version of the CLI tool.             │
 ╰─────────────────────────────────────────────────────────────────╯
 ```
+
+## Development Environment
+
+Setup the Virtual Environment with:
+
+```bash
+uv venv
+```
+
+This creates a new `.venv` folder containing your virtual environment files. You should see this when successful:
+
+```bash
+Using CPython 3.13.5 interpreter at: /opt/homebrew/opt/python@3.13/bin/python3.13
+Creating virtual environment at: .venv
+Activate with: source .venv/bin/activate
+```
