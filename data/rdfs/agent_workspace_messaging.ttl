@@ -1,0 +1,391 @@
+@prefix zd: <http://zendesk.org/agent-workspace#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# ========================================
+# INTERFACE COMPONENTS
+# ========================================
+
+zd:AgentWorkspace rdf:type zd:AgentWorkspace ;
+    rdfs:label "Agent Workspace" ;
+    zd:contains zd:ContextPanel, zd:MessageWindow, zd:NotificationSystem ;
+    zd:enabledBy zd:Administrator ;
+    zd:supportsChannel zd:WebWidgetMessaging, zd:SocialMessaging, zd:EmailChannel, zd:LiveChat .
+
+zd:ContextPanel rdf:type zd:ContextPanel ;
+    rdfs:label "Context Panel" ;
+    zd:displays zd:CustomerContext, zd:KnowledgeArticles, zd:IntegratedApps ;
+    zd:configuredBy zd:Administrator ;
+    zd:hasFeature zd:UserInformation, zd:InteractionHistory, zd:SideConversations ;
+    zd:providesAccessTo zd:KnowledgeBase, zd:CustomApps ;
+    zd:enablesFeatures zd:UserInformation, zd:InteractionHistory .
+
+zd:MessageWindow rdf:type zd:MessageWindow ;
+    rdfs:label "Message Window" ;
+    zd:displaysConversation zd:Conversation ;
+    zd:enablesComposition zd:MessageComposer ;
+    zd:showsTypingIndicators true .
+
+zd:NotificationSystem rdf:type zd:NotificationSystem ;
+    rdfs:label "Notification System" ;
+    zd:managesNotifications zd:AcceptButton, zd:SoundAlerts, zd:DesktopNotifications ;
+    zd:alertsAgents zd:Agent ;
+    zd:playsSound zd:IncomingMessageAlert ;
+    zd:showsVisualIndicator zd:AcceptButton ;
+    zd:managedBy zd:RoutingRule ;
+    zd:hasConfiguration zd:RoutingMethod, zd:NotificationLimit .
+
+zd:AcceptButton rdf:type zd:AcceptButton ;
+    rdfs:label "Accept Button" ;
+    zd:triggeredBy zd:IncomingMessage ;
+    zd:enablesAcceptance zd:ConversationRequest .
+
+# ========================================
+# COMMUNICATION CHANNELS
+# ========================================
+
+zd:WebWidgetMessaging rdf:type zd:MessagingChannel ;
+    rdfs:label "Web Widget Messaging" ;
+    zd:enablesPersistentConversations true ;
+    zd:supportsAttachments true ;
+    zd:configuredBy zd:Administrator ;
+    zd:hasConfiguration zd:MaxFileSize .
+
+zd:SocialMessaging rdf:type zd:MessagingChannel ;
+    rdfs:label "Social Messaging" ;
+    zd:includesPlatforms "Facebook", "WhatsApp", "Instagram" ;
+    zd:enablesRichContent true ;
+    zd:supportsFallbackText true .
+
+zd:EmailChannel rdf:type zd:CommunicationChannel ;
+    rdfs:label "Email Channel" ;
+    zd:integratedWithWorkspace true ;
+    zd:supportsForwarding true .
+
+zd:LiveChat rdf:type zd:CommunicationChannel ;
+    rdfs:label "Live Chat" ;
+    zd:isSynchronous true ;
+    zd:hasRoutingRules zd:ChatRouting ;
+    zd:supportsProactiveChat true .
+
+# ========================================
+# DATA OBJECTS
+# ========================================
+
+zd:Ticket rdf:type zd:Ticket ;
+    rdfs:label "Support Ticket" ;
+    zd:assignedTo zd:Agent ;
+    zd:createdVia zd:WebWidgetMessaging ;
+    zd:hasCustomField zd:IssueCategory ;
+    zd:routesToAgent zd:Agent ;
+    zd:usesChannel zd:WebWidgetMessaging ;
+    zd:triggersNotification zd:AcceptButton ;
+    zd:belongsToConversation zd:Conversation .
+
+zd:Conversation rdf:type zd:Conversation ;
+    rdfs:label "Persistent Conversation" ;
+    zd:spanChannels zd:WebWidgetMessaging, zd:EmailChannel ;
+    zd:maintainsHistory true ;
+    zd:involvesBotHandoff true ;
+    zd:involvesHandoff zd:Bot, zd:Agent ;
+    zd:enablesChannelSwitching true ;
+    zd:maintainsHistory zd:InteractionHistory .
+
+# ========================================
+# USER ROLES
+# ========================================
+
+zd:Agent rdf:type zd:Agent ;
+    rdfs:label "Support Agent" ;
+    zd:managesConversations zd:Conversation ;
+    zd:belongsToGroup zd:SupportGroup ;
+    zd:hasNotificationPreferences zd:SoundEnabled, zd:DesktopAlerts ;
+    zd:canUseFeatures zd:Macros, zd:KnowledgeSearch, zd:CallConsole ;
+    zd:acceptsNotification zd:AcceptButton ;
+    zd:usesWorkspace zd:AgentWorkspace ;
+    zd:accessesContext zd:ContextPanel ;
+    zd:managesTickets zd:Ticket .
+
+zd:Customer rdf:type zd:Customer ;
+    rdfs:label "Customer" ;
+    zd:hasEmail "customer@example.com" ;
+    zd:belongsToOrganization zd:Organization ;
+    zd:preferredChannel zd:WebWidgetMessaging .
+
+zd:Administrator rdf:type zd:Administrator ;
+    rdfs:label "System Administrator" ;
+    zd:configures zd:AgentWorkspace, zd:ContextPanel, zd:RoutingRules ;
+    zd:manages zd:BusinessRules, zd:Triggers, zd:Macros ;
+    zd:enablesFeatures zd:MessagingChannels, zd:OmnichannelRouting .
+
+zd:Bot rdf:type zd:Bot ;
+    rdfs:label "Customer Service Bot" ;
+    zd:handlesInitialInteractions true ;
+    zd:transfersContextTo zd:Agent ;
+    zd:supportsRichContent true ;
+    zd:resumesControlAfterTicketClosure true ;
+    zd:initiatesConversation zd:Conversation ;
+    zd:transfersTo zd:Agent .
+
+# ========================================
+# AUTOMATION COMPONENTS
+# ========================================
+
+zd:Macro rdf:type zd:Macro ;
+    rdfs:label "Standard Response Macro" ;
+    zd:createdBy zd:Agent ;
+    zd:isPrivate false ;
+    zd:containsActions zd:SetStatus, zd:AddTag ;
+    zd:appliesTo zd:Ticket ;
+    zd:reduces zd:AgentWorkload ;
+    zd:standardizes zd:ResponseQuality ;
+    zd:executesMultipleActions true .
+
+zd:Trigger rdf:type zd:Trigger ;
+    rdfs:label "Messaging Routing Trigger" ;
+    zd:hasConditions zd:TicketChannel, zd:TicketStatus ;
+    zd:executesActions zd:AssignToGroup, zd:SetPriority ;
+    zd:isActive true ;
+    zd:configuredBy zd:Administrator ;
+    zd:monitors zd:TicketCreation ;
+    zd:evaluates zd:RoutingConditions ;
+    zd:executes zd:AutomatedActions .
+
+zd:BusinessRule rdf:type zd:BusinessRule ;
+    rdfs:label "Automated Processing Rule" ;
+    zd:includes zd:Trigger, zd:Automation ;
+    zd:appliesToChannel zd:WebWidgetMessaging, zd:SocialMessaging ;
+    zd:enhancesWorkflow true ;
+    zd:automatesWorkflow zd:TicketProcessing ;
+    zd:enhancesEfficiency true .
+
+zd:RoutingRule rdf:type zd:RoutingRule ;
+    rdfs:label "Assigned Notification Routing" ;
+    zd:defaultValue "assigned" ;
+    zd:appliesToChannel zd:WebWidgetMessaging, zd:LiveChat ;
+    zd:enablesReassignment true ;
+    zd:hasConfiguration zd:ReassignmentTimeout .
+
+# ========================================
+# ORGANIZATIONAL ENTITIES
+# ========================================
+
+zd:SupportGroup rdf:type zd:SupportGroup ;
+    rdfs:label "Primary Support Group" ;
+    zd:contains zd:Agent ;
+    zd:handlesChannels zd:WebWidgetMessaging, zd:EmailChannel ;
+    zd:hasConfiguration zd:GroupCapacity .
+
+zd:Organization rdf:type zd:Organization ;
+    rdfs:label "Customer Organization" ;
+    zd:contains zd:Customer .
+
+# ========================================
+# FEATURES AND CAPABILITIES
+# ========================================
+
+zd:UserInformation rdf:type zd:Feature ;
+    rdfs:label "User Information Display" ;
+    zd:enabledIn zd:ContextPanel ;
+    zd:displaysData zd:CustomerProfile, zd:ContactDetails .
+
+zd:InteractionHistory rdf:type zd:Feature ;
+    rdfs:label "Interaction History" ;
+    zd:enabledIn zd:ContextPanel ;
+    zd:showsPastTickets true ;
+    zd:showsWebActivity true .
+
+zd:SideConversations rdf:type zd:Feature ;
+    rdfs:label "Side Conversations" ;
+    zd:enabledIn zd:ContextPanel ;
+    zd:allowsInternalDiscussion true .
+
+zd:KnowledgeSearch rdf:type zd:Feature ;
+    rdfs:label "Knowledge Base Search" ;
+    zd:enabledIn zd:ContextPanel ;
+    zd:providesArticleSuggestions true .
+
+zd:MessageComposer rdf:type zd:MessageComposer ;
+    rdfs:label "Message Composition Interface" ;
+    zd:enabledIn zd:MessageWindow ;
+    zd:supportsRichText true ;
+    zd:enablesAttachments true .
+
+# ========================================
+# WORKFLOW ELEMENTS
+# ========================================
+
+zd:ConversationRequest rdf:type zd:WorkflowElement ;
+    rdfs:label "Conversation Request" ;
+    zd:generatedBy zd:IncomingMessage ;
+    zd:requiresAgentAction zd:AcceptNotification ;
+    zd:requires zd:AgentAcceptance ;
+    zd:displays zd:AcceptButton ;
+    zd:hasTimeout zd:ConversationTimeout .
+
+zd:IncomingMessage rdf:type zd:WorkflowElement ;
+    rdfs:label "Incoming Message Event" ;
+    zd:triggers zd:NotificationSystem ;
+    zd:createsTicket zd:Ticket ;
+    zd:creates zd:Ticket ;
+    zd:initiates zd:ConversationRequest .
+
+# ========================================
+# SETTINGS AND PREFERENCES
+# ========================================
+
+zd:SoundEnabled rdf:type zd:Setting ;
+    rdfs:label "Sound Notifications" ;
+    zd:belongsTo zd:Agent .
+
+zd:DesktopAlerts rdf:type zd:Setting ;
+    rdfs:label "Desktop Alert Notifications" ;
+    zd:belongsTo zd:Agent .
+
+zd:IssueCategory rdf:type zd:CustomField ;
+    rdfs:label "Issue Category" .
+
+# ========================================
+# ACTIONS AND OPERATIONS
+# ========================================
+
+zd:SetStatus rdf:type zd:Action ;
+    rdfs:label "Set Ticket Status" ;
+    zd:executedBy zd:Macro .
+
+zd:AddTag rdf:type zd:Action ;
+    rdfs:label "Add Tag to Ticket" ;
+    zd:executedBy zd:Macro .
+
+zd:AssignToGroup rdf:type zd:Action ;
+    rdfs:label "Assign to Support Group" ;
+    zd:executedBy zd:Trigger .
+
+zd:SetPriority rdf:type zd:Action ;
+    rdfs:label "Set Ticket Priority" ;
+    zd:executedBy zd:Trigger .
+
+zd:AcceptNotification rdf:type zd:Action ;
+    rdfs:label "Accept Conversation" ;
+    zd:performedBy zd:Agent ;
+    zd:resultsIn zd:ConversationAssignment .
+
+# ========================================
+# DEFAULT VALUES AND CONFIGURATIONS
+# ========================================
+
+zd:RoutingMethod rdf:type zd:Configuration ;
+    rdfs:label "Routing Method" ;
+    zd:defaultValue "assigned" .
+
+zd:NotificationLimit rdf:type zd:Configuration ;
+    rdfs:label "Notification Limit" ;
+    zd:defaultValue 5 .
+
+zd:MaxFileSize rdf:type zd:Configuration ;
+    rdfs:label "Maximum File Size" ;
+    zd:defaultValue "50MB" .
+
+zd:ReassignmentTimeout rdf:type zd:Configuration ;
+    rdfs:label "Reassignment Timeout" ;
+    zd:defaultValue 15 .
+
+zd:ConversationTimeout rdf:type zd:Configuration ;
+    rdfs:label "Conversation Timeout" ;
+    zd:defaultValue 30 .
+
+zd:GroupCapacity rdf:type zd:Configuration ;
+    rdfs:label "Group Capacity" ;
+    zd:defaultValue 20 .
+
+# ========================================
+# REFERENCED ENTITIES
+# ========================================
+
+zd:CustomerContext rdf:type zd:DataObject ;
+    rdfs:label "Customer Context" .
+
+zd:KnowledgeArticles rdf:type zd:DataObject ;
+    rdfs:label "Knowledge Articles" .
+
+zd:IntegratedApps rdf:type zd:Feature ;
+    rdfs:label "Integrated Apps" .
+
+zd:SoundAlerts rdf:type zd:NotificationComponent ;
+    rdfs:label "Sound Alerts" .
+
+zd:DesktopNotifications rdf:type zd:NotificationComponent ;
+    rdfs:label "Desktop Notifications" .
+
+zd:ChatRouting rdf:type zd:RoutingRule ;
+    rdfs:label "Chat Routing" .
+
+zd:Macros rdf:type zd:Feature ;
+    rdfs:label "Macros Feature" .
+
+zd:CallConsole rdf:type zd:Feature ;
+    rdfs:label "Call Console" .
+
+zd:RoutingRules rdf:type zd:Configuration ;
+    rdfs:label "Routing Rules" .
+
+zd:BusinessRules rdf:type zd:Configuration ;
+    rdfs:label "Business Rules" .
+
+zd:Triggers rdf:type zd:Configuration ;
+    rdfs:label "Triggers" .
+
+zd:MessagingChannels rdf:type zd:Feature ;
+    rdfs:label "Messaging Channels" .
+
+zd:OmnichannelRouting rdf:type zd:Feature ;
+    rdfs:label "Omnichannel Routing" .
+
+zd:Automation rdf:type zd:AutomationComponent ;
+    rdfs:label "Automation" .
+
+zd:CustomerProfile rdf:type zd:DataObject ;
+    rdfs:label "Customer Profile" .
+
+zd:ContactDetails rdf:type zd:DataObject ;
+    rdfs:label "Contact Details" .
+
+zd:KnowledgeBase rdf:type zd:DataObject ;
+    rdfs:label "Knowledge Base" .
+
+zd:CustomApps rdf:type zd:Feature ;
+    rdfs:label "Custom Apps" .
+
+zd:TicketChannel rdf:type zd:Condition ;
+    rdfs:label "Ticket Channel Condition" .
+
+zd:TicketStatus rdf:type zd:Condition ;
+    rdfs:label "Ticket Status Condition" .
+
+zd:AgentWorkload rdf:type zd:Metric ;
+    rdfs:label "Agent Workload" .
+
+zd:ResponseQuality rdf:type zd:Metric ;
+    rdfs:label "Response Quality" .
+
+zd:TicketProcessing rdf:type zd:Workflow ;
+    rdfs:label "Ticket Processing" .
+
+zd:TicketCreation rdf:type zd:Event ;
+    rdfs:label "Ticket Creation" .
+
+zd:RoutingConditions rdf:type zd:Condition ;
+    rdfs:label "Routing Conditions" .
+
+zd:AutomatedActions rdf:type zd:Action ;
+    rdfs:label "Automated Actions" .
+
+zd:AgentAcceptance rdf:type zd:Action ;
+    rdfs:label "Agent Acceptance" .
+
+zd:ConversationAssignment rdf:type zd:WorkflowElement ;
+    rdfs:label "Conversation Assignment" .
+
+zd:IncomingMessageAlert rdf:type zd:NotificationComponent ;
+    rdfs:label "Incoming Message Alert" .
