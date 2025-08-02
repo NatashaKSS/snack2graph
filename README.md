@@ -15,7 +15,7 @@ Install `uv` (see [the doc site](https://docs.astral.sh/uv)), our Python package
 Verify your setup by running the command below.
 
 ```bash
-uv run python main.py --help
+uv run python src/main.py --help
 ```
 
 **Tip:** Whenever this command is run, `uv` automatically installs the needed packages from the lockfile into your `.venv` project environment and even creates it if hasn't been yet (see [the doc site about 'project environment'](https://docs.astral.sh/uv/concepts/projects/layout/#the-project-environment) for more info).
@@ -25,7 +25,7 @@ uv run python main.py --help
 The project includes a CLI tool for processing text files. Show all available commands using `help`.
 
 ```bash
-uv run python main.py --help
+uv run python src/main.py --help
 ```
 
 A successful run should look like:
