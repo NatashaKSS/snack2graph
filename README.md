@@ -20,9 +20,9 @@ uv run python src/main.py --help
 
 **Tip:** Whenever this command is run, `uv` automatically installs the needed packages from the lockfile into your `.venv` project environment and even creates it if hasn't been yet (see [the doc site about 'project environment'](https://docs.astral.sh/uv/concepts/projects/layout/#the-project-environment) for more info).
 
-## Running the CLI Tool
+## Running the CLI
 
-The project includes a CLI tool for processing text files. Show all available commands using `help`.
+The project includes a CLI for processing text files. Show all available commands using `help`.
 
 ```bash
 uv run python src/main.py --help
@@ -42,20 +42,4 @@ Snack2Graph parses unstructured text and constructs a Knowledge Graph with a ric
 │ process   Create a knowledge graph with the given text file.    │
 │ version   Show the current version of the CLI tool.             │
 ╰─────────────────────────────────────────────────────────────────╯
-```
-
-## Development Environment
-
-Setup the Virtual Environment with:
-
-```bash
-uv venv
-```
-
-This creates a new `.venv` folder containing your virtual environment files. You should see this when successful:
-
-```bash
-Using CPython 3.13.5 interpreter at: /opt/homebrew/opt/python@3.13/bin/python3.13
-Creating virtual environment at: .venv
-Activate with: source .venv/bin/activate
 ```
