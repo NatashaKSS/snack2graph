@@ -1,6 +1,6 @@
-# Knowledge Graph Construction
+# (Research notes) Knowledge Graph Construction
 
-- [Knowledge Graph Construction](#knowledge-graph-construction)
+- [(Research notes) Knowledge Graph Construction](#research-notes-knowledge-graph-construction)
   - [Overview](#overview)
   - [Strategy](#strategy)
   - [1. Data Ingestion](#1-data-ingestion)
@@ -16,7 +16,7 @@ This document outlines the methodology and best practices for constructing scala
 
 ## Strategy
 
-Modern knowledge graph (KG) construction transforms unstructured text into structured, queryable knowledge representations through a systematic five-stage pipeline. This comprehensive framework synthesizes cutting-edge research findings with practical implementation strategies, providing a robust foundation for building scalable knowledge extraction systems. Each stage addresses specific technical challenges while maintaining coherence across the entire pipeline, from initial data ingestion through final graph optimization.
+Modern knowledge graph (KG) construction transforms unstructured text into structured, queryable knowledge representations through a systematic pipeline.
 
 ## 1. Data Ingestion
 
