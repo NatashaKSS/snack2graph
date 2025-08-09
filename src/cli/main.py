@@ -1,8 +1,10 @@
-import typer
 from pathlib import Path
+
+import typer
 from typing_extensions import Annotated
 
-from lib.data_ingestor import generate_text_chunks
+from lib.data_ingestor import load_data
+from lib.text_chunker import generate_chunks
 
 APP_NAME = "Snack2Graph"
 APP_VERSION = "0.1.0"
@@ -37,5 +39,9 @@ def generate_knowledge_graph(
     ],
 ) -> None:
     """Process the input file and construct a knowledge graph."""
-    result = generate_text_chunks(file_path)
-    typer.echo(result)
+    text = load_data(file_path)
+    chunks = generate_chunks(text)
+
+    # pretty print each chunk
+    for i, chunk in enumerate(chunks, 1):
+        typer.echo(f"\n{'=' * 30}\nChunk {i}\n{'=' * 30}\n{chunk.strip()}\n")
