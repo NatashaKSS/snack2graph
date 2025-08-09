@@ -39,7 +39,7 @@ Snack2Graph parses unstructured text and constructs a Knowledge Graph with a ric
 │ --help          Show this message and exit.                     │
 ╰─────────────────────────────────────────────────────────────────╯
 ╭─ Commands ──────────────────────────────────────────────────────╮
-│ process   Create a knowledge graph with the given text file.    │
+│ construct Create a knowledge graph with the given text file.    │
 │ version   Show the current version of the CLI tool.             │
 ╰─────────────────────────────────────────────────────────────────╯
 ```
