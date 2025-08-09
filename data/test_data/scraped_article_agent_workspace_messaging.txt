@@ -1,0 +1,171 @@
+Agent Workspace
+
+The Zendesk Agent Workspace enables agents to work seamlessly across Zendesk channels, all within a single ticket interface. Agents can use the appropriate channels to address issues, without being restricted to the channel in which the customer originally made contact.
+
+When activated by an administrator, agents can manage all channels within the same interface. They don’t have to switch between dashboards to view and track customers issues. They have a full, customer-centric view of their work, enabling them to provide faster, better, and more personalized service.
+
+Watch this video for an overview of the Zendesk Agent Workspace:
+
+Tip: Read this Zendesk blog post for more tips on building a great experience for your agents.
+This article contains the following topics:
+
+Sample ticket
+Sample workflow
+Benefits
+Additional features
+Messaging support in the Zendesk Agent Workspace
+Agent copilot support in the Zendesk Agent Workspace
+Related articles
+Documentation resources for the Zendesk Agent Workspace
+Resources for migrating to the Zendesk Agent Workspace
+Migrating to the Zendesk Agent Workspace
+Optimizing the Zendesk Agent Workspace
+Sample ticket
+
+The following is a sample ticket in the workspace.
+
+
+
+Key elements of this ticket include:
+
+Ticket conversations can include email, chat, and voice. Agents can also receive and reply to social messages and web messages.
+Messaging and chat notifications appear at the top of the page.
+Agents can open the call console at the top of the page and manage calls from the workspace.
+With omnichannel routing, you can automatically direct agent workload across multiple channels to ensure that the highest-priority tickets are assigned to the agents who are most available to work on them.
+Agents can set their status from a single, unified menu.
+Customer context information, including interaction history, appears on the right side. Agents can use the context panel to toggle between customer context and apps.
+If your account includes a help center, agents can use the Knowledge panel to search, link, and quote your help center content in tickets.
+
+If your account has side conversations activated, agents can use the context panel to create and manage side conversations on a ticket.
+
+If your account has custom objects activated, agents can use the context panel to preview custom object records related to the ticket.
+
+To be compatible with messaging and chats and provide a more natural conversation order, ticket comments are arranged from oldest to newest, with the newest comments at the bottom. For customers with plans that support custom layouts, you can change the order.
+The visitor path shows a list of websites the requester has viewed. The interaction history shows a list of Support events.
+Sample workflow
+
+Here’s the sample workflow shown in this ticket:
+
+While working with Support tickets in her queue, Agent Jackie receives a chat notification from her customer Maggie. Maggie wants to know the status of a refund.
+From within the ticket, Jackie replies to Maggie by chat to let her know her refund has been processed. Jackie promises to email Maggie the reference number.
+Instead of keeping Maggie waiting online, Jackie ends the chat and takes a few minutes to look up the reference number for the refund.
+When Jackie finds the reference number, she sends an email reply to Maggie. She includes the refund reference number and details about the refund status.
+If Maggie has questions about the refund, Jackie can use the call console in the workspace to call Maggie and explain details.
+Benefits
+
+Jackie likes the workspace because she doesn’t have to swap between her Support tickets, the Chat dashboard, and her office switchboard. She has a clean, unified record of her interactions with Maggie to solve her issue. Jackie can swap seamlessly between channels, picking the best one as appropriate. She uses chats for quick, timely, interactive conversations, relies on email for longer, follow-up communications, and uses phone calls for urgent, sensitive, or complex matters.
+
+Additional features
+
+Additional capabilities in the workspace include:
+
+Feature	Description
+
+
+Agents can see the customer’s chat and messaging status in their Support tickets. See Using ticket tabs to manage conversations.
+
+	
+Agents can serve or end a chat from the ticket.
+
+	
+Agents can set their status for multiple channels from a single, unified status menu.
+Agents can switch to a call and start it directly from within a ticket conversation.
+Agents can forward, pause, or end calls from the ticket.
+Agents can use the call console to receive and place calls.
+
+Messaging support in the Zendesk Agent Workspace
+
+Social and web messaging are supported in the Zendesk Agent Workspace. When configured, agents can receive and reply to social and web messages in the Zendesk Agent Workspace. These messages appear as part of a unified conversation within the ticket. For more information, see Receiving and sending messages in the Zendesk Agent Workspace.
+
+
+
+Messaging channels for the Zendesk Agent Workspace are configured in Zendesk Admin Center. For more information, see Getting started with web and mobile messaging and Getting started with social messaging.
+
+Agent copilot support in the Zendesk Agent Workspace
+
+For customers with the Copilot add-on, agent copilot is supported in the Zendesk Agent Workspace. When activated by an admin, agents can use the powerful auto assist feature to help them solve tickets quickly. Agent copilot also includes other features, such as
+
+Ticket summaries
+Suggested first replies
+Suggested macros, and more
+
+
+For more information, see About agent copilot.
+
+Agent Workspace for Messaging
+
+If enabled by an admin, end users can send messages to agents through the Web Widget, and agents can manage these conversations in the Zendesk Agent Workspace. Similar to social messaging, it provides a native, persistent messaging channel you can use to talk to your customers. This article provides an overview of messaging in the agent workspace. For details on how to send and receive messages, see Receiving and sending messages in the Zendesk Agent Workspace.
+
+This article contains these sections:
+
+About Web Widget messages in the Agent Workspace
+Messaging flow
+Information at your fingertips
+Working with attachments
+Related articles
+About the Zendesk Agent Workspace
+Enabling messaging
+About Web Widget messages in the Agent Workspace
+
+Messaging for the Web Widget lets you deliver rich, modern, and automated conversation experiences out-of-the-box on your website. It gives customers the unique flexibility to pop in and out of the conversation at their leisure so they can get help on their own terms.
+
+With messaging in the Web Widget:
+
+Customers can start and pick up conversations anywhere, any time, without losing their history.
+Agents can take advantage of the automated flows and data capture that their admins have built into the messaging flow, so they can step in and answer a message at just the right time with all the relevant information they need to help a customer.
+Similar to social messaging in the agent workspace, agents can manage messages as part of a unified conversation experience.
+Messaging flow
+
+Customers use the Web Widget to send messages, and agents use the Zendesk Agent Workspace to respond. These messages become tickets in the workspace. Also, if enabled by your admin, customers may interact with a bot first, before requesting to talk to an agent. Your Zendesk admin configures the types of messages you can receive and how these messages are routed to your queue.
+
+
+
+When you’re working online in the agent interface, you’ll see an active Accept button at the top of the interface when a new messaging ticket comes in.
+
+
+
+This Accept button works for live chats, social messaging, and messages from the Web Widget.
+
+When you accept a message, you’ll see the channel type (via messaging) in the conversation header. Just like live chats and social messages, you can use the composer to reply on the messaging channel, add an internal note, send an email, or make a call. You can use Chat shortcuts in Zendesk messages, but Chat shortcuts with options or dynamic content are not supported. You cannot change from a messaging channel to a social messaging channel.
+
+
+
+You will be able view the conversation (if any) that occurred between a bot and the customer before it was handed off to you. So, you’ll have the full context of what’s going on.
+
+
+
+If the end-user and bot conversation included carousels, lists, or other rich text messages, a fallback text-only version appears in the Agent Workspace.
+
+Information at your fingertips
+
+While you’re working with Web Widget messages in the Agent Workspace:
+
+Customer information captured by a bot is visible in customer context and other information captured from the customer is available in custom ticket fields.
+
+
+Similar to social messaging, Web Widget conversations with your customers are enhanced by leveraging all the features available in the agent workspace. This includes:
+
+Targeted, channel-based business rules and ticket tags to help admins route tickets quickly to the right agent at the right time.
+
+
+Views and macros to help you manage your tickets and reply quickly.
+
+
+Ticket tabs and a notifications list to show you which conversations are active. Also, typing, sent, and received indicators to keep you up-to-date.
+	
+Ticket assignments and changes to ticket assignments work the same as with social messaging.
+When the ticket is Closed, control is handed back to the bot which means that the customer will be greeted by that bot when they send a message.
+Working with attachments
+
+Admins can determine whether customers can attach files and images to messaging conversations. See Configuring the widget frame for more information.
+
+Agents and, if allowed, customers can attach files and images to messaging conversations in the Agent Workspace or Web Widget, respectively. Files and images can be attached to conversations in two ways:
+
+Clicking the paper clip icon () in the workspace or widget, then browsing to and selecting the file(s) they want to add to the conversation.
+Selecting the file(s) they want to add to the conversation, then dragging them into the workspace or messaging conversation window.
+File attachments for both customers and agents have the following limitations:
+
+The file size limit is 50 megabytes.
+The file sending options that admins manage from the Chat dashboard apply to live chats, but they do not apply to web, mobile, or social messaging.
+Messaging supports a fixed list of file types, including 3g2, 3gp, 7z, aac, amr, avi, bmp, csv, doc, docx, eml, gif, heic, heif, ics, jfif, jpeg, jpg, key, log, m4a, m4v, mov, mp3, mp4, mp4a, mpeg, mpg, mpga, neon, numbers, odt, oga, ogg, ogv, opus, pages, pdf, png, pps, ppsx, ppt, pptx, qt, svg, tif, tiff, txt, vcf, wav, webm, webp, wmv, xls, xlsx, xml, yaml, yml. Zip files (zip) that include other file types are also supported. 
+Private attachments are currently not available in messaging.

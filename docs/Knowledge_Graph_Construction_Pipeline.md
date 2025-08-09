@@ -43,3 +43,8 @@ Any.
 ### 5. Vector Embedding Generation
 
 (To be explored. We want to explore what different kinds of embeddings can be generated and for what use case are they good for?) At the very minimum, the embeddings should try to preserve the overall structure and connectedness of the knowledge graph and not just resort to using the pure-text form of the context.
+
+## Open Source Frameworks or Libraries to try
+
+1. https://github.com/google/langextract for entity & relationship extraction?
+2.
