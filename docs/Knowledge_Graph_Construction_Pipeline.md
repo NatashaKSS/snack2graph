@@ -8,7 +8,7 @@ This document describes the approach(es) tried & chosen for the purposes of buil
 
 The one thing I'll do a little differently in this pipeline is to incorporate the ontology of the knowledge graph into each step of the pipeline. An ontology is a structured representation of the concepts, relationships and constraints of a particular domain of knowledge. It can permit or deny certain entities & relationships and even prevent the logical boundaries of the domain from being violated.
 
-I believe that maintaining ontological boundaries throughout the pipeline ensures semantic consistency and improves extraction quality. By incorporating domain-specific constraints at each stage, the system can make more informed decisions about chunk boundaries, entity relationships, and vector representations, ultimately producing a more accurate and coherent knowledge graph that respects the logical structure of the domain.
+**Goal:** I believe that maintaining ontological boundaries throughout the pipeline ensures semantic consistency and improves extraction quality. By incorporating domain-specific constraints at each stage, the system can make more informed decisions about chunk boundaries, entity relationships, and vector representations, ultimately producing a more accurate and coherent knowledge graph that respects the logical structure of the domain.
 
 ### 1. Data Ingestion
 
@@ -18,8 +18,15 @@ Read source files which will serve as the input to the next step.
 
 A simple text chunker will be used to parse input text. The main criteria for this chunker is that it must:
 
-1. Boundary Clarity - Preserve semantic meaning as much as possible across sentence boundaries and content structure.
-2. Context Preservation - Each chunk maintains references to its parent document and sequential relationships with adjacent chunks. This is so as to promote the explainability
+1. Maintain Boundary Clarity - Preserve semantic meaning as much as possible across sentence boundaries and content structure.
+2. Preserve Context - Each chunk maintains references to its parent document and sequential relationships with adjacent chunks to promote the explainability of the data source.
+
+so that the data is in a form that retains the clarity needed for entity & relationships parsing that happens later.
+
+#### References
+
+1. [Article: 5 Levels Of Text Splitting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb). This is a good starting introduction to text splitting using LangChain library methods, however, don't be constrained by the ranking and the number of techniques here as a mixture may be required for every extraction task.
+2. [Common Chunking Techniques from Microsoft](https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-chunk-documents)
 
 ### 3. Entity Extraction & Relationship Mining
 
@@ -46,5 +53,5 @@ Any.
 
 ## Open Source Frameworks or Libraries to try
 
-1. https://github.com/google/langextract for entity & relationship extraction?
+1. [Google's LangExtract](https://github.com/google/langextract) for entity & relationship extraction. LangExtract is a Python library that uses LLMs to extract structured information from unstructured text documents based on user-defined instructions.
 2.
