@@ -48,7 +48,7 @@ Snack2Graph parses unstructured text and constructs a Knowledge Graph with a ric
 
 ### Code Formatting
 
-[`ruff`](https://docs.astral.sh/ruff/) is the chosen linter & formatter for this project. You can also install extensions in your own IDE that support `ruff` to help you run these linting & formatting check as your develop.
+[`ruff`](https://docs.astral.sh/ruff/) is the chosen linter & formatter for this project.
 
 Check for lint violations for all files in the project with the configured lint rules:
 
@@ -60,4 +60,19 @@ Update all files in the project with the configured formatting rules:
 
 ```bash
 uv run ruff format
+```
+
+#### Recommended VS Code Extensions
+
+You can also install extensions in your own IDE that support `ruff` to help you run these linting & formatting check as your develop. The recommended plugin for this project is `Ruff` by `Astral Software`, and here is a sample JSON you can use in `settings.json` to lint & format code and organize imports automatically.
+
+```json
+"[python]": {
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "charliermarsh.ruff",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  }
+}
 ```
