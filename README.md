@@ -43,3 +43,21 @@ Snack2Graph parses unstructured text and constructs a Knowledge Graph with a ric
 │ version   Show the current version of the CLI tool.             │
 ╰─────────────────────────────────────────────────────────────────╯
 ```
+
+## Development
+
+### Code Formatting
+
+[`ruff`](https://docs.astral.sh/ruff/) is the chosen linter & formatter for this project. You can also install extensions in your own IDE that support `ruff` to help you run these linting & formatting check as your develop.
+
+Check for lint violations for all files in the project with the configured lint rules:
+
+```bash
+uv run ruff check
+```
+
+Update all files in the project with the configured formatting rules:
+
+```bash
+uv run ruff format
+```

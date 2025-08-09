@@ -10,3 +10,8 @@ dependencies = [
 
 [project.scripts]
 kg-cli = "main:app"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.8",
+]
