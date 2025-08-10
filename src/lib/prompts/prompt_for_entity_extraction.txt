@@ -1,0 +1,69 @@
+Given the following text content, extract semantic entities and relationships to build a Knowledge Graph representation:
+
+**Text:** {text}
+
+**Ontology (RDF Format):**
+{ontology}
+
+**IMPORTANT:** Only extract entities and relationships that are explicitly defined in the ontology above. Respect all ontological constraints including allowed entity types, relationship types, and domain/range restrictions specified in the RDF schema.
+
+Give your response in this JSON format:
+
+```json
+{
+  "entities": [
+    {
+      "name": "EntityName",
+      "properties": {
+        "key": "value"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "source": "SourceEntityName",
+      "target": "TargetEntityName", 
+      "relation": "relationship_type",
+      "properties": {
+        "key": "value"
+      }
+    }
+  ]
+}
+```
+
+During your extraction process, follow these instructions as much as possible: 
+
+### Dos:
+
+1. **Extract ALL key entities, concepts, or actors** mentioned in the text that match the provided ontology
+2. **Create comprehensive relationships** between all relevant entities based on the text content
+3. **Use exact entity names** as they appear in the text for consistency
+4. **Choose precise relationship types** from the ontology that accurately describe interactions
+5. **Fill all required fields** for both entities and relationships
+6. **Capture important details** as properties of entities or relationships when relevant
+7. **Connect entities meaningfully** - ensure extracted entities relate to each other logically
+8. **Follow ontological constraints** strictly - only use predefined entity types and relationship types
+9. **Extract complete context** - include all entities that are central to understanding the text
+10. **Use descriptive property values** that add meaningful information about entities and relationships
+11. **Prioritize explicit information** found directly in the text over assumptions
+12. **Create direct relationships** between entities when the text clearly indicates connections
+
+### Don'ts:
+
+1. **Don't extract entities or relationships** not defined in the provided ontology
+2. **Don't create duplicate entities** - use consistent naming for the same entity across extractions
+3. **Don't infer information** that isn't explicitly stated or strongly implied in the text
+4. **Don't create overly complex structures** when simple relationships suffice
+5. **Don't ignore ontological constraints** - always respect domain/range restrictions
+6. **Don't create relationships without clear textual evidence** of the connection
+7. **Don't use relationship types** not present in your ontology schema
+8. **Don't extract trivial or irrelevant details** that don't contribute to knowledge representation
+9. **Don't create isolated entities** without attempting to find meaningful connections
+10. **Don't duplicate existing relationships** - focus on new information only
+11. **Don't create intermediate entities** when direct relationships are more appropriate
+12. **Don't violate cardinality constraints** or other restrictions specified in the ontology
+
+**Important:** 
+1. Always try to ensure a clear graph structure. 
+Focus on capturing the essential knowledge from the text while strictly adhering to your ontological boundaries and constraints.

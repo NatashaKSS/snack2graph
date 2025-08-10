@@ -946,9 +946,11 @@ name = "snack-2-graph"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "langchain-core" },
     { name = "langchain-experimental" },
     { name = "langchain-openai" },
     { name = "langchain-text-splitters" },
+    { name = "pydantic" },
     { name = "typer" },
 ]
 
@@ -959,9 +961,11 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "langchain-core", specifier = ">=0.3.74" },
     { name = "langchain-experimental", specifier = ">=0.3.4" },
     { name = "langchain-openai", specifier = ">=0.3.29" },
     { name = "langchain-text-splitters", specifier = ">=0.3.9" },
+    { name = "pydantic", specifier = ">=2.11.7" },
     { name = "typer", specifier = ">=0.12.0" },
 ]
 

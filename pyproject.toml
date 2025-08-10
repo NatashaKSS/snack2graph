@@ -5,9 +5,11 @@ description = "An application that parses unstructured text and constructs a Kno
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "langchain-core>=0.3.74",
     "langchain-experimental>=0.3.4",
     "langchain-openai>=0.3.29",
     "langchain-text-splitters>=0.3.9",
+    "pydantic>=2.11.7",
     "typer>=0.12.0",
 ]
 
