@@ -6,26 +6,38 @@ from langchain_openai import ChatOpenAI
 from lib.graph.knowledge_graph import KnowledgeGraph
 
 
-def compose_prompt() -> ChatPromptTemplate:
-    """Obtains the prompt template and returns the full prompt"""
-    with open("prompt_for_entity_extraction.txt", "r", encoding="utf-8") as f:
+def init_prompt(text: str, ontology: str) -> ChatPromptTemplate:
+    """Generates the prompt template from any specified input parameters and returns the full prompt"""
+    with open(
+        "src/lib/prompts/prompt_for_entity_extraction.txt", "r", encoding="utf-8"
+    ) as f:
         prompt_template_str = f.read()
 
-    return ChatPromptTemplate.from_template(prompt_template_str)
+    return ChatPromptTemplate.from_template(
+        template=prompt_template_str, text=text, ontology=ontology
+    )
 
 
-def create_extraction_chain() -> Any:
-    """Create a chain for entity and relationship extraction."""
-    prompt = compose_prompt()
+def init_llm() -> Any:
+    """Initialize the LLM used for for entity and relationship extraction."""
     llm = ChatOpenAI(
-        model="gpt-4o", temperature=0.1, verbose=True, max_retries=2, timeout=30.0
-    ).with_structured_output(schema=KnowledgeGraph)
+        model="gpt-4o-mini",
+        temperature=0.1,
+        verbose=True,
+        max_retries=2,
+        timeout=30.0,
+        max_completion_tokens=5000,
+    ).with_structured_output(schema=KnowledgeGraph, method="json_schema")
 
-    return prompt | llm
+    return llm
 
 
 def extract_knowledge_graph_from_text(text: str, ontology: str) -> KnowledgeGraph:
     """Extract entities and relationships from text using the extraction chain."""
-    chain = create_extraction_chain()
+    prompt = init_prompt(text, ontology)
+    llm = init_llm()
+
+    chain = prompt | llm
     result = chain.invoke({"text": text, "ontology": ontology})
+
     return result

@@ -1,6 +1,8 @@
-from typing import Any, Dict, Optional
+from typing import List, Optional
 
 from pydantic import BaseModel, Field
+
+from .property import Property
 
 
 class Entity(BaseModel):
@@ -9,7 +11,7 @@ class Entity(BaseModel):
     name: str = Field(
         description="The name of the entity, e.g. 'Singapore', 'Person', 'Salmon'."
     )
-    properties: Optional[Dict[str, Any]] = Field(
+    properties: Optional[List[Property]] = Field(
         description="The distinct properties that describe this entity."
     )
 

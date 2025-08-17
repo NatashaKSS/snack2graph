@@ -1,8 +1,9 @@
 from typing import List
 
-from entity import Entity
 from pydantic import BaseModel
-from relationship import Relationship
+
+from .entity import Entity
+from .relationship import Relationship
 
 
 class KnowledgeGraph(BaseModel):

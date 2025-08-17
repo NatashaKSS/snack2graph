@@ -1,6 +1,8 @@
-from typing import Any, Dict, Optional
+from typing import List, Optional
 
 from pydantic import BaseModel, Field
+
+from .property import Property
 
 
 class Relationship(BaseModel):
@@ -11,7 +13,7 @@ class Relationship(BaseModel):
     relation: str = Field(
         description="The type of this relationship, e.g. 'used_by', 'owns', typically used in the context of '<Source><Relationship Type><Target>'."
     )
-    properties: Optional[Dict[str, Any]] = Field(
+    properties: Optional[List[Property]] = Field(
         description="The distinct properties that describe this relationship."
     )
 

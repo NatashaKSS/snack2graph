@@ -10,26 +10,26 @@ Given the following text content, extract semantic entities and relationships to
 Give your response in this JSON format:
 
 ```json
-{
+{{
   "entities": [
-    {
+    {{
       "name": "EntityName",
-      "properties": {
+      "properties": {{
         "key": "value"
-      }
-    }
+      }}
+    }}
   ],
   "relationships": [
-    {
+    {{
       "source": "SourceEntityName",
       "target": "TargetEntityName", 
       "relation": "relationship_type",
-      "properties": {
+      "properties": {{
         "key": "value"
-      }
-    }
+      }}
+    }}
   ]
-}
+}}
 ```
 
 During your extraction process, follow these instructions as much as possible: 

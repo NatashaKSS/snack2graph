@@ -1,0 +1,170 @@
+{
+  "entities": [
+    {
+      "name": "Agent Workspace",
+      "properties": null
+    },
+    {
+      "name": "Agent",
+      "properties": null
+    },
+    {
+      "name": "Customer",
+      "properties": null
+    },
+    {
+      "name": "Administrator",
+      "properties": null
+    },
+    {
+      "name": "Web Widget Messaging",
+      "properties": null
+    },
+    {
+      "name": "Social Messaging",
+      "properties": null
+    },
+    {
+      "name": "Email Channel",
+      "properties": null
+    },
+    {
+      "name": "Live Chat",
+      "properties": null
+    },
+    {
+      "name": "Ticket",
+      "properties": null
+    },
+    {
+      "name": "Conversation",
+      "properties": null
+    },
+    {
+      "name": "Bot",
+      "properties": null
+    },
+    {
+      "name": "Support Group",
+      "properties": null
+    },
+    {
+      "name": "Knowledge Base",
+      "properties": null
+    },
+    {
+      "name": "Macro",
+      "properties": null
+    },
+    {
+      "name": "Trigger",
+      "properties": null
+    },
+    {
+      "name": "Business Rule",
+      "properties": null
+    },
+    {
+      "name": "Routing Rule",
+      "properties": null
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Agent Workspace",
+      "target": "Agent",
+      "relation": "usesWorkspace",
+      "properties": null
+    },
+    {
+      "source": "Agent",
+      "target": "Ticket",
+      "relation": "managesTickets",
+      "properties": null
+    },
+    {
+      "source": "Ticket",
+      "target": "Conversation",
+      "relation": "belongsToConversation",
+      "properties": null
+    },
+    {
+      "source": "Ticket",
+      "target": "Web Widget Messaging",
+      "relation": "createdVia",
+      "properties": null
+    },
+    {
+      "source": "Agent",
+      "target": "Customer",
+      "relation": "interactsWith",
+      "properties": null
+    },
+    {
+      "source": "Administrator",
+      "target": "Agent Workspace",
+      "relation": "configures",
+      "properties": null
+    },
+    {
+      "source": "Agent Workspace",
+      "target": "Web Widget Messaging",
+      "relation": "supportsChannel",
+      "properties": null
+    },
+    {
+      "source": "Agent Workspace",
+      "target": "Social Messaging",
+      "relation": "supportsChannel",
+      "properties": null
+    },
+    {
+      "source": "Agent Workspace",
+      "target": "Email Channel",
+      "relation": "supportsChannel",
+      "properties": null
+    },
+    {
+      "source": "Agent Workspace",
+      "target": "Live Chat",
+      "relation": "supportsChannel",
+      "properties": null
+    },
+    {
+      "source": "Agent",
+      "target": "Bot",
+      "relation": "transfersContextTo",
+      "properties": null
+    },
+    {
+      "source": "Agent",
+      "target": "Support Group",
+      "relation": "belongsToGroup",
+      "properties": null
+    },
+    {
+      "source": "Agent",
+      "target": "Macro",
+      "relation": "canUseFeatures",
+      "properties": null
+    },
+    {
+      "source": "Agent",
+      "target": "Trigger",
+      "relation": "canUseFeatures",
+      "properties": null
+    },
+    {
+      "source": "Agent",
+      "target": "Business Rule",
+      "relation": "canUseFeatures",
+      "properties": null
+    },
+    {
+      "source": "Agent",
+      "target": "Routing Rule",
+      "relation": "canUseFeatures",
+      "properties": null
+    }
+  ]
+}
