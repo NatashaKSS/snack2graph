@@ -1,5 +1,7 @@
 # Microsoft GraphRAG Implementation Strategy: Key Concepts and Step-by-Step Approach
 
+**🚧 Work in Progress 🚧**
+
 ## Core Principles
 
 GraphRAG represents a **hybrid semi-supervised approach** that elegantly balances structure with discovery. Unlike the 'supervised' approach that relies on a handcrafted ontology, Microsoft's GraphRAG approach uses **minimal upfront schema definition** while leveraging LLMs for automated entity and relationship discovery.[^1]
